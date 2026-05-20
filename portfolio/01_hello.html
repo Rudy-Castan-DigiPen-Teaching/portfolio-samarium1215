@@ -69,17 +69,18 @@
 
     <div class="portfolio-item-individual">
         <h2>Project Overview</h2>
-        <p>Provide a brief description of the project, its purpose, and what you aimed to achieve.</p>
+        <p>This project is the first graphics demo for CS250, aiming to set up a foundational OpenGL rendering pipeline. The goal was to render an animated, texture-mapped quad on the screen, establishing the architecture for future 3D applications.</p>
 
         <h2>Tasks Completed</h2>
         <ul>
-            <li>Describe the tasks you completed for this project.</li>
-            <li>Be specific about your contributions and the technologies used.</li>
+            <li>Implemented foundational OpenGL wrapper classes including <code>IndexBuffer</code>, <code>VertexBuffer</code>, <code>VertexArray</code>, and <code>Texture</code>.</li>
+            <li>Integrated time-based animation logic within the vertex shader to oscillate vertex positions, creating a wavy motion effect.</li>
+            <li>Configured fragment shaders to dynamically interpolate colors between vertex colors and a custom-drawn texture based on time.</li>
+            <li>Adapted the project to successfully build and run on both Windows x64 and Web targets (via Emscripten).</li>
         </ul>
 
         <h2>Reflection</h2>
-        <p>Reflect on the project, discussing any challenges faced, solutions implemented, and what you learned from the
-            experience.</p>
+        <p>This assignment provided a solid introduction to OpenGL rendering mechanics and state management. Working with WebGL compilation via Emscripten highlighted the necessity of writing robust, cross-platform shader code. One of the main challenges was correctly wrapping OpenGL's C-style API into a more modern, object-oriented C++ design, especially with correctly configuring Vertex Array object states. Successfully seeing the texture reload feature and shaders in action was incredibly rewarding.</p>
     </div>
 
     <div class="portfolio-item-individual">
