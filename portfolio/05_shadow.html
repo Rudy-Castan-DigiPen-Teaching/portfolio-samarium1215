@@ -10,7 +10,7 @@
 
     <!-- Help auto scale for desktop & mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STUDENT TODO Website</title>
+    <title>Shadow Mapping Portfolio | Sangmin Seo</title>
 
     <!-- Normalize the difference across browsers  https://necolas.github.io/normalize.css/ -->
     <link rel="stylesheet" href="../external/normalize.css">
@@ -69,17 +69,19 @@
 
     <div class="portfolio-item-individual">
         <h2>Project Overview</h2>
-        <p>Provide a brief description of the project, its purpose, and what you aimed to achieve.</p>
+        <p>In this assignment, I implemented and integrated <strong>Shadow Mapping</strong>, a real-time graphics technique for rendering shadows cast by objects. A perspective light source is modeled as a camera, whose viewing frustum is used to render a depth map of the scene. During the main screen-space rendering pass, the distance from each fragment to the light is compared with the recorded depth value to determine whether the fragment is in shadow.</p>
 
         <h2>Tasks Completed</h2>
         <ul>
-            <li>Describe the tasks you completed for this project.</li>
-            <li>Be specific about your contributions and the technologies used.</li>
+            <li>Implemented a robust depth texture generation routine (<strong>LoadAsDepthTexture</strong>) inside the <strong>Texture</strong> class, configuring clamping and comparison mode settings to eliminate edge artifacts.</li>
+            <li>Constructed precise camera coordinate transformation matrices (<strong>ViewMatrix</strong> and <strong>ToWorldMatrix</strong>) inside the <strong>Camera</strong> class using column-major vectors and dot products, avoiding generic matrix inversion calls.</li>
+            <li>Built and validated custom <strong>FrameBuffer</strong> targets to handle multi-pass rendering, dynamically linking depth and color texture attachments.</li>
+            <li>Implemented rendering control pipelines in C++: rendering scene geometry to the light depth buffer using polygon offset fill, rendering shadows with projective texture mapping via <code>textureProj</code> in shaders, and visualizing the light's camera frustum and depth map.</li>
+            <li>Authored vertex and fragment GLSL shaders (<strong>shadows.vert</strong> and <strong>shadows.frag</strong>) supporting perspective depth space projection, behind-light shadow elimination, exponential fog attenuation, and gamma-corrected colors.</li>
         </ul>
 
         <h2>Reflection</h2>
-        <p>Reflect on the project, discussing any challenges faced, solutions implemented, and what you learned from the
-            experience.</p>
+        <p>One of the primary challenges in shadow mapping is <strong>shadow acne</strong>, caused by numerical precision limits in the depth texture. I resolved this by applying a depth offset via <code>GL_POLYGON_OFFSET_FILL</code> during the depth pass to offset the fragment depths backward. Another challenge was <strong>reverse projection shadows</strong> where objects behind the light source cast spurious shadows. I implemented a boundary check in the fragment shader to test whether the shadow space coordinates fall behind the projection frustum (where homogeneous coordinate <code>w < 0.0</code> or depth <code>z < 0.0</code>), successfully bypassing reverse shadowing. This homework deepened my understanding of spaces, projection matrices, and multi-pass rendering pipelines.</p>
     </div>
 
     <div class="portfolio-item-individual">
@@ -89,7 +91,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <a href="mailto:my.email@digipen.edu" class="footer__link">my.email@digipen.edu</a>
+        <a href="mailto:sangm@digipen.edu" class="footer__link">sangm@digipen.edu</a>
         <ul class="social-list">
             <li class="social-list__item">
                 <a class="social-list__link" href="https://linkedin.com/in/mylinkedinid">
