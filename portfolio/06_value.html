@@ -6,11 +6,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="../img/face.jpg">
+    <link class="js-favicon" rel="icon" type="image/svg+xml" href="../img/face.jpg">
 
     <!-- Help auto scale for desktop & mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STUDENT TODO Website</title>
+    <title>Sangmin Seo's Website</title>
 
     <!-- Normalize the difference across browsers  https://necolas.github.io/normalize.css/ -->
     <link rel="stylesheet" href="../external/normalize.css">
@@ -69,17 +69,22 @@
 
     <div class="portfolio-item-individual">
         <h2>Project Overview</h2>
-        <p>Provide a brief description of the project, its purpose, and what you aimed to achieve.</p>
+        <p>In this project, we implemented a procedural texture generation system in C++ using a Value Noise algorithm. The system supports 1D, 2D, and 3D noise generation on a lattice using a permutation hash, allowing for adjustable interpolation methods to smooth grid values. We integrated the generated textures dynamically into a custom OpenGL pipeline with dedicated shaders, creating high-fidelity visual representations of procedural patterns such as wood, marble, turbulence, and fractal sums.</p>
 
         <h2>Tasks Completed</h2>
         <ul>
-            <li>Describe the tasks you completed for this project.</li>
-            <li>Be specific about your contributions and the technologies used.</li>
+            <li>Implemented 1D, 2D, and 3D Value Noise template classes in C++ (<code>ValueNoise.hpp</code>).</li>
+            <li>Designed a native compile-time <code>constexpr_floor</code> helper to handle coordinate decomposition, achieving standard C++20 <code>constexpr</code> compatibility under MSVC (<code>NoiseCoordinate.hpp</code>).</li>
+            <li>Programmed multiple smooth fade interpolation parameters including Linear, Cosine, Smoothstep, and Quintic algorithms (<code>Fade.hpp</code>).</li>
+            <li>Implemented standard linear, bilinear, and trilinear spatial mixing algorithms (<code>Interpolation.hpp</code>).</li>
+            <li>Implemented random-shuffled permutation hashing (<code>PermutationHash.hpp</code>) utilizing bitwise masking to enable correct boundary wrapping and seamless tiling when repeated.</li>
+            <li>Enhanced the <code>opengl::Texture</code> wrapper class to support allocating empty GPU textures (<code>LoadAsRGBA</code>) and dynamically uploading newly computed noise pixel data (<code>UploadAsRGBA</code>).</li>
+            <li>Created vertex (<code>simple.vert</code>) and fragment (<code>simple.frag</code>) OpenGL shaders to scale and map the generated textures onto full-screen quads.</li>
+            <li>Integrated full ImGui controls into the demo to dynamically adjust tiling scale, smooth methods, noise dimensions, period dimension sizes, patterns, and source lattice point values.</li>
         </ul>
 
         <h2>Reflection</h2>
-        <p>Reflect on the project, discussing any challenges faced, solutions implemented, and what you learned from the
-            experience.</p>
+        <p>Implementing Value Noise highlighted the elegance and complexity of procedural texture generation. Achieving seamless tiling when repeated was a key focus, requiring a strict understanding of how coordinate boundaries wrap using the permutation mask and bitwise operations. Another interesting challenge was standardizing the C++20 <code>constexpr</code> implementation of coordinate calculations on MSVC, which was resolved by designing a custom native <code>constexpr_floor</code> to avoid compiler dependencies. Decomposing the noise calculation progressively across frames successfully prevented program freezing without relying on multi-threading. The project was incredibly rewarding, resulting in beautifully rendered marble, wood, and turbulence patterns.</p>
     </div>
 
     <div class="portfolio-item-individual">
@@ -89,19 +94,18 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <a href="mailto:my.email@digipen.edu" class="footer__link">my.email@digipen.edu</a>
+        <a href="mailto:2005.sseo@gmail.com" class="footer__link">2005.sseo@gmail.com</a>
         <ul class="social-list">
             <li class="social-list__item">
-                <a class="social-list__link" href="https://linkedin.com/in/mylinkedinid">
+                <a class="social-list__link" href="https://www.linkedin.com/in/sangmin-seo-844546408/">
                     <i class="fab fa-linkedin"></i>
                 </a>
             </li>
             <li class="social-list__item">
-                <a class="social-list__link" href="https://github.com/mygithubid">
+                <a class="social-list__link" href="https://github.com/samarium1215">
                     <i class="fab fa-github"></i>
                 </a>
             </li>
-            <!-- Want to list more? search : https://fontawesome.com/v5/search?ic=brands -->
         </ul>
     </footer>
 
