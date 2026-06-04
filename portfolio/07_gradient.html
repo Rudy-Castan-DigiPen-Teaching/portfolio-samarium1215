@@ -6,10 +6,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="../img/face.jpg">
+    <link class="js-favicon" rel="icon" type="image/svg+xml" href="../img/face.jpg">
+
     <!-- Help auto scale for desktop & mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STUDENT TODO Website</title>
+    <title>Sangmin Seo's Website</title>
 
     <!-- Normalize the difference across browsers  https://necolas.github.io/normalize.css/ -->
     <link rel="stylesheet" href="../external/normalize.css">
@@ -68,17 +69,22 @@
 
     <div class="portfolio-item-individual">
         <h2>Project Overview</h2>
-        <p>Provide a brief description of the project, its purpose, and what you aimed to achieve.</p>
+        <p>In this project, we implemented an Improved 3D Perlin Gradient Noise algorithm directly on the GPU using GLSL. To support high-precision floating-point noise maps, we enhanced our texture loading and framebuffer allocation systems in C++ to handle <code>R32F</code> (single-channel 32-bit floating point), <code>RGBA32F</code>, and <code>RGBA8</code> color formats. The noise values are generated in real-time onto an offscreen framebuffer, and visualized either as a seamless 2D texture slice or as a displaced 3D terrain-like surface. The procedural patterns implemented include Plain Gradient Noise, Fractal Sum, Turbulence, Marble, and Wood.</p>
 
         <h2>Tasks Completed</h2>
         <ul>
-            <li>Describe the tasks you completed for this project.</li>
-            <li>Be specific about your contributions and the technologies used.</li>
+            <li>Implemented the Improved 3D Perlin Gradient Noise algorithm inside custom GLSL shaders (<code>gen_gradient_noise.vert</code>/<code>.frag</code>).</li>
+            <li>Embedded a hardcoded 64-entry permutation table (duplicated to 128) and implemented Ken Perlin's quintic fade curve ($6t^5 - 15t^4 + 10t^3$) in GLSL.</li>
+            <li>Programmed gradient vector selection from 12 fixed directions cycled by hash values, calculating smooth spatial noise interpolation.</li>
+            <li>Developed GLSL mathematical functions to evaluate Plain Gradient, Fractal Sum, Turbulence, Marble, and Wood patterns directly on the GPU.</li>
+            <li>Enhanced C++ <code>opengl::Texture</code> class with a custom <code>LoadAsFormat</code> function supporting different color formats (<code>RGBA8</code>, <code>RGBA32F</code>, <code>R32F</code>) and incorporating fallback logic for older OpenGL versions using <code>GL::TexStorage2D</code> or <code>GL::TexImage2D</code>.</li>
+            <li>Updated C++ <code>opengl::FrameBuffer</code> specification to support <code>R32F</code> formats for real-time offscreen texture generation.</li>
+            <li>Created vertex (<code>simple.vert</code>, <code>surface.vert</code>) and fragment (<code>simple.frag</code>) shaders to map the generated float textures onto a full-screen quad and to dynamically displace the vertex positions of a plane mesh along the Z-axis to visualize the noise as 3D terrain.</li>
+            <li>Designed interactive UI controls in C++ with ImGui to modify tiling scale, Z-coordinate input, terrain area/height scaling, and mesh stack/slice density in real-time.</li>
         </ul>
 
         <h2>Reflection</h2>
-        <p>Reflect on the project, discussing any challenges faced, solutions implemented, and what you learned from the
-            experience.</p>
+        <p>Developing Perlin Gradient Noise highlighted the performance advantages of GPU-based procedural generation compared to CPU-based lattice sampling. Generating 3D noise in real-time on an offscreen <code>R32F</code> framebuffer allowed us to maintain interactive frame rates even at high resolutions. A major challenge was achieving perfect, seam-free tiling when repeating the texture. By scaling the inputs to the 64-period permutation table and implementing safe coordinate wrapping (<code>safe_mod</code>) in GLSL, we ensured the texture wraps seamlessly. Displacing plane mesh vertices in <code>surface.vert</code> using the noise texture was an exciting challenge, showing how procedural noise can be used to generate realistic, dynamic 3D terrains. This project deepened my understanding of GPU shaders, framebuffer-object management, and advanced graphics programming.</p>
     </div>
 
     <div class="portfolio-item-individual">
@@ -88,19 +94,18 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <a href="mailto:my.email@digipen.edu" class="footer__link">my.email@digipen.edu</a>
+        <a href="mailto:2005.sseo@gmail.com" class="footer__link">2005.sseo@gmail.com</a>
         <ul class="social-list">
             <li class="social-list__item">
-                <a class="social-list__link" href="https://linkedin.com/in/mylinkedinid">
+                <a class="social-list__link" href="https://www.linkedin.com/in/sangmin-seo-844546408/">
                     <i class="fab fa-linkedin"></i>
                 </a>
             </li>
             <li class="social-list__item">
-                <a class="social-list__link" href="https://github.com/mygithubid">
+                <a class="social-list__link" href="https://github.com/samarium1215">
                     <i class="fab fa-github"></i>
                 </a>
             </li>
-            <!-- Want to list more? search : https://fontawesome.com/v5/search?ic=brands -->
         </ul>
     </footer>
 
