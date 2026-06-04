@@ -69,7 +69,7 @@
 
     <div class="portfolio-item-individual">
         <h2>Project Overview</h2>
-        <p>In this project, we implemented an Improved 3D Perlin Gradient Noise algorithm directly on the GPU using GLSL. To support high-precision floating-point noise maps, we enhanced our texture loading and framebuffer allocation systems in C++ to handle <code>R32F</code> (single-channel 32-bit floating point), <code>RGBA32F</code>, and <code>RGBA8</code> color formats. The noise values are generated in real-time onto an offscreen framebuffer, and visualized either as a seamless 2D texture slice or as a displaced 3D terrain-like surface. The procedural patterns implemented include Plain Gradient Noise, Fractal Sum, Turbulence, Marble, and Wood.</p>
+        <p>In this project, I implemented an Improved 3D Perlin Gradient Noise algorithm directly on the GPU using GLSL. To support high-precision floating-point noise maps, I enhanced my texture loading and framebuffer allocation systems in C++ to handle <code>R32F</code> (single-channel 32-bit floating point), <code>RGBA32F</code>, and <code>RGBA8</code> color formats. The noise values are generated in real-time onto an offscreen framebuffer, and visualized either as a seamless 2D texture slice or as a displaced 3D terrain-like surface. The procedural patterns implemented include Plain Gradient Noise, Fractal Sum, Turbulence, Marble, and Wood.</p>
 
         <h2>Tasks Completed</h2>
         <ul>
@@ -84,7 +84,7 @@
         </ul>
 
         <h2>Reflection</h2>
-        <p>Developing Perlin Gradient Noise highlighted the performance advantages of GPU-based procedural generation compared to CPU-based lattice sampling. Generating 3D noise in real-time on an offscreen <code>R32F</code> framebuffer allowed us to maintain interactive frame rates even at high resolutions. A major challenge was achieving perfect, seam-free tiling when repeating the texture. By scaling the inputs to the 64-period permutation table and implementing safe coordinate wrapping (<code>safe_mod</code>) in GLSL, we ensured the texture wraps seamlessly. Displacing plane mesh vertices in <code>surface.vert</code> using the noise texture was an exciting challenge, showing how procedural noise can be used to generate realistic, dynamic 3D terrains. This project deepened my understanding of GPU shaders, framebuffer-object management, and advanced graphics programming.</p>
+        <p>Developing Perlin Gradient Noise highlighted the performance advantages of GPU-based procedural generation compared to CPU-based lattice sampling. Generating 3D noise in real-time on an offscreen <code>R32F</code> framebuffer allowed me to maintain interactive frame rates even at high resolutions. A major challenge was achieving perfect, seam-free tiling when repeating the texture. By scaling the inputs to the 64-period permutation table and implementing safe coordinate wrapping (<code>safe_mod</code>) in GLSL, I ensured the texture wraps seamlessly. Displacing plane mesh vertices in <code>surface.vert</code> using the noise texture was an exciting challenge, showing how procedural noise can be used to generate realistic, dynamic 3D terrains. This project deepened my understanding of GPU shaders, framebuffer-object management, and advanced graphics programming.</p>
     </div>
 
     <div class="portfolio-item-individual">
